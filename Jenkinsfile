@@ -2,8 +2,9 @@ pipeline {
     agent any
 
 	tools {
-  		jdk 'OracleJDK17'
-  		maven 'MAVEN3'
+		  maven 'MAVEN3'
+  		jdk 'OracleJDK11'
+  		
 	}
 
 	environment {
@@ -23,11 +24,12 @@ pipeline {
         }
 		stage('Sonarqube Analysis'){
 			steps {
-				sh '''
-					$SCANNER_HOME/bin/sonar-scanner -Dsonar.url=http://192.168.121.121:9000/ -Dsonar.login=${SONAR_TOKEN} -Dsonnar.projectName=shopping \
-					-Dsonar.java.binaries=. \
-					-Dsonar.projectKey=shopping
-				'''
+				echo "SCANNER_HOME"
+				// sh '''
+				// 	$SCANNER_HOME/bin/sonar-scanner -X -Dsonar.url=http://192.168.121.121:9000/ -Dsonar.login=${SONAR_TOKEN} -Dsonnar.projectName=shopping \
+				// 	-Dsonar.java.binaries=. \
+				// 	-Dsonar.projectKey=shopping
+				// '''
 			}
 		}
     }

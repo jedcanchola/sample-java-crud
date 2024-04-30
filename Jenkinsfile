@@ -24,7 +24,7 @@ pipeline {
         }
 		stage('Sonarqube Analysis'){
 			steps {
-				echo "SCANNER_HOME"
+				echo $SCANNER_HOME
 				// sh '''
 				// 	$SCANNER_HOME/bin/sonar-scanner -X -Dsonar.url=http://192.168.121.121:9000/ -Dsonar.login=${SONAR_TOKEN} -Dsonnar.projectName=shopping \
 				// 	-Dsonar.java.binaries=. \
